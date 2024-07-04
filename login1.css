@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>LOGIN PAGE</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      background: url('your-background-image.jpg') center/cover no-repeat;
+      /* Add your background image URL and adjust other properties as needed */
+    }
+
+    .login {
+      width: 300px;
+      padding: 30px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: #131313;
+      text-align: center;
+      transform: translate(-50%, -50%);
+    }
+
+    .login h1 {
+      font-size: 25px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .login input[type="email"],
+    .login input[type="password"] {
+      display: block;
+      transition: 0.25s;
+      background: none;
+      color: white;
+      width: 200px;
+      margin: 20px auto;
+      text-align: center;
+      outline: none;
+      border: 5px solid #3498db;
+      border-radius: 24px;
+      padding: 14px 10px;
+    }
+
+    .login input[type="email"]:focus,
+    .login input[type="password"]:focus {
+      width: 90%;
+      border-color: green;
+    }
+
+    .login input[type="submit"] {
+      display: block;
+      transition: 0.25s;
+      background: none;
+      color: white;
+      width: 200px;
+      margin: 20px auto;
+      text-align: center;
+      outline: none;
+      border: 5px solid #2ecc71;
+      border-radius: 24px;
+      padding: 14px 40px;
+      cursor: pointer;
+    }
+
+    .login input[type="submit"]:hover {
+      background: #2ecc71;
+    }
+
+    .checkbox {
+      position: absolute;
+      display: block;
+      left: 20%;
+      margin: 10px;
+    }
+
+    p {
+      color: white;
+    }
+
+    #message {
+      display: none;
+      background: #f1f1f1;
+      color: #000;
+      position: relative;
+      padding: 20px;
+      margin-top: 10px;
+    }
+
+    #message p {
+      padding: 10px 35px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <form class="login" name="login" onsubmit="return validateForm()" action="index.html" method="post" required>
+    <h1>LOGIN PAGE</h1>
+    <input type="email" name="email" id="email" placeholder="Enter Your Email." required>
+    <input type="password" id="password" name="password" placeholder="Enter Your password." pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+    <input type="checkbox" class="checkbox" onclick="myFunction()">
+    <p>show password</p>
+    <input type="submit" value="LOGIN">
+  </form>
+  <div id="message">
+    <h2>Password must contain the following: </h2>
+    <p id="letter" class="invalid">A <b>Lowercase</b> letter.</p>
+    <p id="capital" class="invalid">A <b>capital (Uppercase)</b> letter</p>
+    <p id="number" class="invalid">A <b> number</b></p>
+    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+  </div>
+  <script>
+    function validateForm() {
+      var form = document.forms["login"]["email"].value;
+      if (form == "" || form == null) {
+        alert("Email must be filled out");
+        return false;
+      }
+      var pass = document.forms["login"]["password"].value;
+      if (pass.length < 8 || pass == null) {
+        alert("password must contain more than 8 characters and must not be empty.");
+        return false;
+      }
+    }
+
+    function myFunction() {
+      let x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
+</body>
+
+</html>
